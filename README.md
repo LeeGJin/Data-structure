@@ -1,1 +1,2 @@
-대학교 <자료구조> 실습 내용
+# Data struvture
+This is the content of a university data structure class practice.
