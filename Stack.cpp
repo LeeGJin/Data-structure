@@ -2,65 +2,65 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_STACK_SIZE 100 // Àü¿ª º¯¼ö·Î ¼±¾ğµÈ ½ºÅÃÀÇ ÃÖ´ë Å©±â
-typedef int element; // element¶ó´Â intÇü ¼±¾ğ
+#define MAX_STACK_SIZE 100 // ì „ì—­ ë³€ìˆ˜ë¡œ ì„ ì–¸ëœ ìŠ¤íƒì˜ ìµœëŒ€ í¬ê¸°
+typedef int element; // elementë¼ëŠ” intí˜• ì„ ì–¸
 
 typedef struct {
-	element stack[MAX_STACK_SIZE]; // ½ºÅÃÀÇ ¹è¿­ ¼±¾ğ
-	int top; // ½ºÅÃÀÇ top ¼±¾ğ
+	element stack[MAX_STACK_SIZE]; // ìŠ¤íƒì˜ ë°°ì—´ ì„ ì–¸
+	int top; // ìŠ¤íƒì˜ top ì„ ì–¸
 } StackType;
 
-void init_stack(StackType* s) //±³¼ö´Ô ¼³¸í : ±¸Á¶Ã¼ ¾È¿¡¼­ ÃÊ±âÈ­ÇÏ´Â °ÍÀº ¾ÈµÈ´Ù. ±¸Á¶Ã¼ ¾È¿¡ ÀÖ´Â °ÍÀº typeÀÌ´Ù. ±»ÀÌ ÇÔ¼ö¸¦ ¾È¸¸µé·Á¸é main¿¡¼­ ÃÊ±âÈ­¸¦ ÇØ¾ßÇÑ´Ù.
+void init_stack(StackType* s) //êµìˆ˜ë‹˜ ì„¤ëª… : êµ¬ì¡°ì²´ ì•ˆì—ì„œ ì´ˆê¸°í™”í•˜ëŠ” ê²ƒì€ ì•ˆëœë‹¤. êµ¬ì¡°ì²´ ì•ˆì— ìˆëŠ” ê²ƒì€ typeì´ë‹¤. êµ³ì´ í•¨ìˆ˜ë¥¼ ì•ˆë§Œë“¤ë ¤ë©´ mainì—ì„œ ì´ˆê¸°í™”ë¥¼ í•´ì•¼í•œë‹¤.
 {
-	s->top = -1; // topÀ» -1·Î ÃÊ±âÈ­
+	s->top = -1; // topì„ -1ë¡œ ì´ˆê¸°í™”
 }
 
 bool is_empty(StackType *s)
 {
-	return (s->top == -1);  // topÀÌ -1ÀÌ¸é True ¹İÈ¯ ¾Æ´Ï¸é false ¹İÈ¯
+	return (s->top == -1);  // topì´ -1ì´ë©´ True ë°˜í™˜ ì•„ë‹ˆë©´ false ë°˜í™˜
 }
 
 bool is_full(StackType *s)
 {
-	return (s->top == (MAX_STACK_SIZE - 1)); // topÀÌ MAX_STACK_SIZE - 1ÀÌ¸é True ¹İÈ¯ ¾Æ´Ï¸é false ¹İÈ¯
+	return (s->top == (MAX_STACK_SIZE - 1)); // topì´ MAX_STACK_SIZE - 1ì´ë©´ True ë°˜í™˜ ì•„ë‹ˆë©´ false ë°˜í™˜
 }
 
 void push(StackType *s, element item)
 {
-	if (is_full(s)) // ½ºÅÃÀÌ °¡µæ Ã¡À» ¶§
+	if (is_full(s)) // ìŠ¤íƒì´ ê°€ë“ ì°¼ì„ ë•Œ
 	{
-		printf("½ºÅÃ Æ÷È­ ¿¡·¯\n");
+		printf("ìŠ¤íƒ í¬í™” ì—ëŸ¬\n");
 		return;
 	}
 	else
 	{
-		s->stack[++(s->top)] = item; // topÀ» Áõ°¡½ÃÅ°°í itemÀ» ½ºÅÃ¿¡ ³ÖÀ½
+		s->stack[++(s->top)] = item; // topì„ ì¦ê°€ì‹œí‚¤ê³  itemì„ ìŠ¤íƒì— ë„£ìŒ
 	}
 }
 
 element pop(StackType *s)
 {
-	if (is_empty(s)) // ½ºÅÃÀÌ ºñ¾úÀ» ¶§
+	if (is_empty(s)) // ìŠ¤íƒì´ ë¹„ì—ˆì„ ë•Œ
 	{
-		printf("½ºÅÃ °ø¹é ¿¡·¯\n");
+		printf("ìŠ¤íƒ ê³µë°± ì—ëŸ¬\n");
 		return -1;
 	}
 	else
 	{
-		return s->stack[(s->top)--]; // ½ºÅÃÀ» ¹İÈ¯ÇÏ°í topÀ» °¨¼Ò½ÃÅ´
+		return s->stack[(s->top)--]; // ìŠ¤íƒì„ ë°˜í™˜í•˜ê³  topì„ ê°ì†Œì‹œí‚´
 	}
 }
 
 element peek(StackType *s)
 {
-	if (is_empty(s)) // ½ºÅÃÀÌ ºñ¾úÀ» ¶§
+	if (is_empty(s)) // ìŠ¤íƒì´ ë¹„ì—ˆì„ ë•Œ
 	{
-		printf("½ºÅÃ °ø¹é ¿¡·¯\n");
+		printf("ìŠ¤íƒ ê³µë°± ì—ëŸ¬\n");
 		return -1;
 	}
 	else
 	{
-		return s->stack[s->top]; // ½ºÅÃÀ» ¹İÈ¯
+		return s->stack[s->top]; // ìŠ¤íƒì„ ë°˜í™˜
 	}
 }
 
@@ -141,13 +141,13 @@ int main()
 
 	const char *str = "{A[(i+1)) = 0;}";
 	if (Check_matching(str) == 1)
-		printf("°ıÈ£ ¸ÅÄª ¼º°ø\n");
+		printf("ê´„í˜¸ ë§¤ì¹­ ì„±ê³µ\n");
 	else 
-		printf("°ıÈ£ ¸ÅÄª ½ÇÆĞ\n");
+		printf("ê´„í˜¸ ë§¤ì¹­ ì‹¤íŒ¨\n");
 
 	int result;
 	result = eval("82/3-32*+");
-	printf("¿¬»ê °á°ú = %d\n", result);
+	printf("ì—°ì‚° ê²°ê³¼ = %d\n", result);
 
 
 	return 0;
