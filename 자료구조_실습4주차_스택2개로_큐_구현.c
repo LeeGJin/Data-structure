@@ -20,7 +20,7 @@ int is_full(StackType* s) {
 int is_empty(StackType* s) {
     return (s->top == -1);
 }
-
+//큐에서 데이터를 넣는 함수는 스택에서 push와 같다.
 void enqueue(StackType* s, int item) {
     if (is_full(s)) {
         printf("포화 에러\n");
@@ -33,7 +33,8 @@ void enqueue(StackType* s, int item) {
 int pop(StackType* s) {
     return (s->stack[s->top--]);
 }
-
+// 큐에서 데이터를 빼는 것을 스택으로 구현하려면 스택이 두개 필요하다 스택은 LIFO 이기 때문에 값을 큐처럼 FIFO으로 빼려면 다른 스택으로 옮긴다.
+//여기서 옮길때 컵에서 다른 컵으로 붓는 것처럼 뒤집어서 넣고 옮긴 스택에서 데이터를 뺀다.
 int dequeue(StackType* s_in, StackType* s_out) {
     if (!is_empty(s_out)) {
         return pop(s_out);
@@ -75,7 +76,8 @@ int main() {
     StackType stack_out;
     init_stack(&stack_in);
     init_stack(&stack_out);
-    
+
+    //출력
     enqueue(&stack_in, 10);
     print_queue(&stack_in, &stack_out);
     enqueue(&stack_in, 20);
