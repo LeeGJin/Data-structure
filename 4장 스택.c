@@ -35,13 +35,11 @@ void init_stack(StackType *s) {
 }
 
 int is_full(StackType *s) {
-    if (s->top == MAX_STACK_SIZE-1) return 1;
-    else return 0;
+    return (s->top == MAX_STACK_SIZE-1);
 }
 
 int is_empty(StackType *s) {
-    if (s->top == -1) return 1;
-    else return 0;
+    return (s->top == -1);
 }
 
 void push(StackType *s, element data) {
